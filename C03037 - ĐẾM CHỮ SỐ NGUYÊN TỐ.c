@@ -1,45 +1,27 @@
 #include<stdio.h> 
+#include<math.h> 
+#include<string.h> 
+#include<ctype.h> 
+#include<stdlib.h> 
 
-int main() 
+int main()
 { 
-	long long n; 
-	scanf("%lld", &n); 
-	int dem2 = 0, dem3 = 0, dem7 = 0, dem5 = 0; 
-	while(n != 0) 
+	char s[20]; 
+	scanf("%s",s); 
+	int cnt[10]={0}; 
+	for(int i=0;i<strlen(s);i++)
 	{ 
-		int a = n % 10; 
-		n = n / 10; 
-		if(a == 2)
-		{
-			dem2++; 
-		}
-		if(a == 3)
-		{
-			dem3++; 
-		}
-		if(a == 5)
-		{
-			dem5++; 
-		}
-		if(a == 7)
-		{
-			dem7++; 
-		}
-	}
-	if(dem2 != 0) 
-	{ 
-		printf("2 %d\n", dem2); 
+		if(s[i]=='2'||s[i]=='3'||s[i]=='5'||s[i]=='7')
+		{ 
+			cnt[s[i]-'0']++; 
+		} 
 	} 
-	if(dem3 != 0) 
+	for(int i=0;i<strlen(s);i++)
 	{ 
-		printf("3 %d\n", dem3); 
-	} 
-	if(dem5 != 0) 
-	{ 
-		printf("5 %d\n", dem5); 
-	} 
-	if(dem7 != 0) 
-	{ 
-		printf("7 %d\n", dem7); 
+		if(cnt[s[i]-'0']!=0)
+		{ 
+			printf("%c %d\n",s[i],cnt[s[i]-'0']); 
+			cnt[s[i]-'0']=0; 
+		} 
 	} 
 }
